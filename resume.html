@@ -56,7 +56,7 @@ display: block;
 
 .hero h1 {
 font-family: ‘Bebas Neue’, Impact, sans-serif;
-font-size: 52px;
+font-size: 44px;
 font-weight: 400;
 color: #f5a800;
 letter-spacing: 4px;
@@ -236,8 +236,9 @@ padding: 5px 13px;
 .hero
 
 @media (max-width: 600px) {
-.hero h1 { font-size: 45px; }
+.hero h1 { font-size: 38px; }
 .card-header { flex-direction: column; }
+.contact-bar { font-size: 13px; padding: 7px 14px; }
 }
 
 .hero .tagline {
@@ -254,7 +255,7 @@ margin-bottom: 4px;
 display: inline-flex;
 align-items: center;
 justify-content: center;
-flex-wrap: wrap;
+flex-wrap: nowrap;
 gap: 6px;
 color: #ffc740;
 font-family: ‘Oswald’, Arial, sans-serif;
@@ -264,8 +265,8 @@ margin-top: 14px;
 background: rgba(245,168,0,0.1);
 border: 1.5px solid rgba(245,168,0,0.35);
 border-radius: 50px;
-padding: 7px 16px;
-max-width: 90%;
+padding: 7px 20px;
+max-width: 95%;
 }
 .contact-bar a {
 color: #ffc740;
@@ -280,7 +281,7 @@ white-space: nowrap;
 }
 .contact-bar .bar {
 color: rgba(245,168,0,0.4);
-font-size: 11px;
+font-size: 13px;
 line-height: 1;
 }
 .contact-bar svg {
@@ -301,17 +302,18 @@ flex-shrink: 0;
     <h1>Sean Bennett</h1>
     <p class="tagline">&#128205; Kings Park, NY</p>
 
+```
 <p class="contact-bar">
   <span class="contact-item">
     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-    <a href="mailto:sean&#64;bennett&#46;ws">s&#101;an&#64;bennett&#46;ws</a> <span class="bar">|</span>
+    <a href="/cdn-cgi/l/email-protection#dba8bebab5fdf8edefe0b9beb5b5beafaffdf8efede0aca8">s&#101;an&#64;bennett&#46;ws</a> <span class="bar">|</span>
   </span>
   <span class="contact-item">
     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 8.68 19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     <a href="tel:+19344003334">+1 934 400 3334</a>
   </span>
 </p>
-
+```
 
   </div>
 
