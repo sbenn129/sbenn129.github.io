@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sean Bennett — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal-dark:   #0d4f56;
+    --teal:        #136b74;
+    --teal-mid:    #1a7f8a;
+    --amber:       #f0a500;
+    --amber-light: #f5b830;
+    --amber-dark:  #c98a00;
+    --navy:        #0a1a1f;
+    --white:       #ffffff;
+    --off-white:   #f0f8f9;
+    --text-light:  #d4eef1;
+  }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+background: linear-gradient(160deg, #0d5a63 0%, #0f6670 40%, #0d5058 100%);
+min-height: 100vh;
+color: var(–white);
+font-family: ‘Lato’, sans-serif;
+font-weight: 300;
+}
+
+/* ── HEADER ── */
+header {
+text-align: center;
+padding: 3.5rem 2rem 2rem;
+position: relative;
+overflow: hidden;
+}
+
+header::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: radial-gradient(ellipse at 50% 0%, rgba(240,165,0,0.13) 0%, transparent 65%);
+pointer-events: none;
+}
+
+.avatar-ring {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 130px;
+height: 130px;
+border-radius: 50%;
+background: conic-gradient(var(–amber), var(–amber-light), var(–amber), var(–amber-dark), var(–amber));
+padding: 4px;
+box-shadow: 0 0 0 4px var(–navy), 0 8px 32px rgba(0,0,0,0.4);
+margin-bottom: 1.5rem;
+animation: fadeDown 0.7s ease forwards;
+}
+
+.avatar-inner {
+width: 100%;
+height: 100%;
+border-radius: 50%;
+background: linear-gradient(135deg, #f5a623, #f0c040);
+border: 3px solid var(–navy);
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 2.8rem;
+color: var(–navy);
+letter-spacing: 0.05em;
+}
+
+h1 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(3rem, 10vw, 5.5rem);
+letter-spacing: 0.08em;
+color: var(–amber);
+text-shadow: 3px 3px 0 var(–navy), 0 0 40px rgba(240,165,0,0.3);
+line-height: 1;
+margin-bottom: 0.6rem;
+animation: fadeDown 0.7s ease forwards 0.15s;
+opacity: 0;
+}
+
+.subtitle {
+font-style: italic;
+font-weight: 300;
+color: var(–text-light);
+font-size: 1rem;
+letter-spacing: 0.04em;
+margin-bottom: 1.8rem;
+animation: fadeDown 0.7s ease forwards 0.3s;
+opacity: 0;
+}
+
+.contact-pills {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 0.75rem;
+margin-bottom: 0.5rem;
+animation: fadeDown 0.7s ease forwards 0.45s;
+opacity: 0;
+}
+
+.pill {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+background: var(–amber);
+color: var(–navy);
+font-family: ‘Lato’, sans-serif;
+font-weight: 700;
+font-size: 0.72rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+padding: 0.55rem 1.3rem;
+border-radius: 50px;
+border: 3px solid var(–navy);
+box-shadow: 3px 3px 0 var(–navy);
+text-decoration: none;
+transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+.pill:hover {
+background: var(–amber-light);
+transform: translate(-2px, -2px);
+box-shadow: 5px 5px 0 var(–navy);
+}
+
+/* ── DIVIDER ── */
+.divider {
+display: flex;
+align-items: center;
+gap: 1rem;
+padding: 0 2rem;
+margin: 1rem 0;
+}
+.divider-line { flex: 1; height: 2px; background: linear-gradient(to right, transparent, var(–amber), transparent); opacity: 0.4; }
+.divider-diamond { width: 8px; height: 8px; background: var(–amber); transform: rotate(45deg); flex-shrink: 0; }
+
+/* ── MAIN ── */
+main {
+max-width: 900px;
+margin: 0 auto;
+padding: 1rem 1.5rem 4rem;
+}
+
+/* ── SECTION ── */
+.section {
+margin-bottom: 2.5rem;
+background: rgba(10, 26, 31, 0.35);
+border: 2px solid rgba(240,165,0,0.25);
+border-radius: 16px;
+overflow: hidden;
+box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+opacity: 0;
+transform: translateY(24px);
+transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.section.visible { opacity: 1; transform: translateY(0); }
+
+.section-title {
+display: flex;
+align-items: center;
+gap: 1rem;
+background: var(–navy);
+padding: 1rem 1.75rem;
+border-bottom: 3px solid var(–amber);
+}
+
+.section-title h2 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 1.6rem;
+letter-spacing: 0.12em;
+color: var(–amber);
+line-height: 1;
+}
+
+.section-icon { color: var(–amber); flex-shrink: 0; }
+.section-body { padding: 1.75rem; }
+
+/* ── SUMMARY ── */
+.summary-text {
+font-size: 0.95rem;
+line-height: 1.8;
+color: var(–off-white);
+border-left: 3px solid var(–amber);
+padding-left: 1.25rem;
+}
+
+.auth-tag {
+display: inline-block;
+margin-top: 1rem;
+background: rgba(240,165,0,0.15);
+border: 1px solid var(–amber);
+color: var(–amber);
+font-size: 0.65rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+padding: 0.3rem 0.9rem;
+border-radius: 4px;
+}
+
+/* ── JOB ── */
+.job {
+padding: 1.5rem 0;
+border-bottom: 1px solid rgba(240,165,0,0.15);
+}
+.job:last-child { border-bottom: none; padding-bottom: 0; }
+.job:first-child { padding-top: 0; }
+
+.job-header {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+align-items: flex-start;
+gap: 0.5rem;
+margin-bottom: 0.35rem;
+}
+
+.job-title {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 1.25rem;
+letter-spacing: 0.08em;
+color: var(–amber-light);
+}
+
+.job-date {
+font-size: 0.68rem;
+letter-spacing: 0.15em;
+color: var(–amber);
+background: rgba(240,165,0,0.12);
+border: 1px solid rgba(240,165,0,0.3);
+padding: 0.25rem 0.75rem;
+border-radius: 50px;
+white-space: nowrap;
+font-weight: 400;
+}
+
+.job-company {
+font-size: 0.8rem;
+color: var(–text-light);
+letter-spacing: 0.06em;
+margin-bottom: 0.85rem;
+font-weight: 400;
+}
+
+.job-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+
+.job-bullets li {
+font-size: 0.85rem;
+color: rgba(240,248,249,0.85);
+padding-left: 1.2rem;
+position: relative;
+line-height: 1.6;
+}
+
+.job-bullets li::before {
+content: ‘▸’;
+position: absolute;
+left: 0;
+color: var(–amber);
+font-size: 0.75rem;
+top: 0.05em;
+}
+
+/* ── EDUCATION ── */
+.edu-item {
+padding: 1rem 0;
+border-bottom: 1px solid rgba(240,165,0,0.15);
+}
+.edu-item:last-child { border-bottom: none; padding-bottom: 0; }
+.edu-item:first-child { padding-top: 0; }
+
+.edu-degree {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 1.15rem;
+letter-spacing: 0.08em;
+color: var(–amber-light);
+margin-bottom: 0.2rem;
+}
+
+.edu-school { font-size: 0.82rem; color: var(–text-light); font-weight: 400; }
+.edu-date { font-size: 0.68rem; color: var(–amber); letter-spacing: 0.1em; margin-top: 0.2rem; }
+
+/* ── SKILLS ── */
+.skills-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+.skill-tag {
+background: rgba(240,165,0,0.12);
+border: 1.5px solid rgba(240,165,0,0.35);
+color: var(–off-white);
+font-size: 0.72rem;
+letter-spacing: 0.06em;
+padding: 0.35rem 0.85rem;
+border-radius: 6px;
+transition: background 0.2s, border-color 0.2s, transform 0.15s;
+cursor: default;
+}
+
+.skill-tag:hover {
+background: rgba(240,165,0,0.25);
+border-color: var(–amber);
+transform: translateY(-2px);
+}
+
+/* ── CERT ── */
+.cert-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.88rem; color: var(–off-white); }
+.cert-dot { width: 10px; height: 10px; background: var(–amber); border-radius: 50%; flex-shrink: 0; }
+
+/* ── FOOTER ── */
+footer {
+text-align: center;
+padding: 2rem;
+font-size: 0.68rem;
+letter-spacing: 0.15em;
+color: rgba(255,255,255,0.3);
+text-transform: uppercase;
+border-top: 1px solid rgba(240,165,0,0.15);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeDown {
+from { opacity: 0; transform: translateY(-16px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+.job-header { flex-direction: column; }
+h1 { font-size: 3rem; }
+}
+</style>
+
+</head>
+<body>
+
+<header>
+  <div class="avatar-ring">
+    <div class="avatar-inner">SB</div>
+  </div>
+  <h1>Sean Bennett</h1>
+  <p class="subtitle">Banking &amp; Operations Professional &nbsp;·&nbsp; Kings Park, NY</p>
+  <div class="contact-pills">
+    <a href="mailto:sean@bennett.ws" class="pill">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      sean@bennett.ws
+    </a>
+    <a href="tel:+19344003334" class="pill">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.9-.9a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+      +1 934 400 3334
+    </a>
+  </div>
+</header>
+
+<div class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-diamond"></div>
+  <div class="divider-line"></div>
+</div>
+
+<main>
+
+  <!-- SUMMARY -->
+
+  <div class="section">
+    <div class="section-title">
+      <svg class="section-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      <h2>Professional Summary</h2>
+    </div>
+    <div class="section-body">
+      <p class="summary-text">Resourceful and innovative professional with expertise in administration, customer service, and leadership. Advanced understanding of customer needs with diligent attention to detail results in superior customer service and high levels of client satisfaction. Proven ability to make critical decisions during challenges, perform in highly visible positions, and work under pressure to meet deadlines.</p>
+      <span class="auth-tag">✓ Authorized to work in the US for any employer</span>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+
+  <div class="section">
+    <div class="section-title">
+      <svg class="section-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+      <h2>Work Experience</h2>
+    </div>
+    <div class="section-body">
+
+```
+  <div class="job">
+    <div class="job-header">
+      <span class="job-title">Banking Operations Specialist II</span>
+      <span class="job-date">Dec 2023 – Dec 2025</span>
+    </div>
+    <div class="job-company">EverBank — Islandia, NY</div>
+    <ul class="job-bullets">
+      <li>Collaborated with departments onsite and remote throughout the EverBank footprint to ensure smooth day-to-day operations and keep business clients happy.</li>
+      <li>Prepped business client applications for onboarding to the EverBank system.</li>
+      <li>Opened and funded various business accounts and products.</li>
+      <li>Updated and maintained various daily financial reports.</li>
+      <li>Enrolled and onboarded business clients into the online banking platform.</li>
+      <li>Sent account-related communications and effectively resolved account-related issues.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-header">
+      <span class="job-title">Financial Services Representative</span>
+      <span class="job-date">Jul 2022 – Dec 2023</span>
+    </div>
+    <div class="job-company">Teachers Federal Credit Union — Kings Park, NY</div>
+    <ul class="job-bullets">
+      <li>Opened a wide range of accounts including checking, savings, CDs, IRAs, business accounts, and Trusts.</li>
+      <li>Provided exceptional member service by addressing inquiries, resolving issues, and offering tailored financial solutions.</li>
+      <li>Handled money transactions with accuracy and compliance with established banking procedures.</li>
+      <li>Leveraged DNA and Salesforce to manage accounts and maintain accurate records.</li>
+      <li>Utilized Google Workspace to streamline communication, collaborate on projects, and manage tasks.</li>
+      <li>Demonstrated strong attention to detail and compliance with regulatory guidelines in all financial transactions.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-header">
+      <span class="job-title">Front Desk / Night Auditor</span>
+      <span class="job-date">Nov 2019 – Jul 2022</span>
+    </div>
+    <div class="job-company">Residence Inn by Marriott — Holtsville, NY</div>
+    <ul class="job-bullets">
+      <li>Received guests professionally, exceeding their expectations from arrival to departure.</li>
+      <li>Supervised all levels of staff including entry and journey-level professionals.</li>
+      <li>Resolved critical issues in a time-sensitive environment using excellent analytical skills.</li>
+      <li>Communicated guest feedback and survey results to departments in a timely manner.</li>
+      <li>Printed and maintained daily records and reports of hotel data at the close of each business day.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-header">
+      <span class="job-title">Office Services Associate</span>
+      <span class="job-date">Apr 2017 – Sep 2019</span>
+    </div>
+    <div class="job-company">C&amp;W Services — Bethpage, NY</div>
+    <ul class="job-bullets">
+      <li>Directed front-desk operations ensuring customer service met high standards for guest satisfaction.</li>
+      <li>Acted as first point of telephone contact with new and established customers.</li>
+      <li>Collaborated with compliance unit to resolve customer issues and maintain high satisfaction levels.</li>
+      <li>Assisted in the execution of initiatives that streamlined business processes for increased efficiency.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-header">
+      <span class="job-title">Mail Clerk</span>
+      <span class="job-date">Jan 2003 – Apr 2017</span>
+    </div>
+    <div class="job-company">Altice USA (Formerly Cablevision) — Woodbury, NY</div>
+    <ul class="job-bullets">
+      <li>Delivered SOP training to employees and facilitated cross-functional workgroups.</li>
+      <li>Forged and maintained solid relationships, working collaboratively with team members to achieve reliable outcomes.</li>
+      <li>Enforced policies and procedures, attaining optimum standards for customer service, quality, and productivity.</li>
+      <li>Worked closely with upper management on sales-building plans, people development, and operational improvements.</li>
+    </ul>
+  </div>
+
+</div>
+```
+
+  </div>
+
+  <!-- EDUCATION -->
+
+  <div class="section">
+    <div class="section-title">
+      <svg class="section-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      <h2>Education</h2>
+    </div>
+    <div class="section-body">
+      <div class="edu-item">
+        <div class="edu-degree">Liberal Arts / Music</div>
+        <div class="edu-school">Nassau Community College — Garden City, NY</div>
+        <div class="edu-date">Aug 2000 – Aug 2002</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">High School Diploma</div>
+        <div class="edu-school">Hicksville High School — Hicksville, NY</div>
+        <div class="edu-date">Sep 1996 – Jun 2000</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+
+  <div class="section">
+    <div class="section-title">
+      <svg class="section-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <h2>Skills</h2>
+    </div>
+    <div class="section-body">
+      <div class="skills-grid">
+        <span class="skill-tag">Banking Operations</span>
+        <span class="skill-tag">Financial Services</span>
+        <span class="skill-tag">Account Management</span>
+        <span class="skill-tag">Customer Service</span>
+        <span class="skill-tag">CRM Systems</span>
+        <span class="skill-tag">Salesforce</span>
+        <span class="skill-tag">Google Workspace</span>
+        <span class="skill-tag">Microsoft Excel</span>
+        <span class="skill-tag">Microsoft Word</span>
+        <span class="skill-tag">Microsoft Outlook</span>
+        <span class="skill-tag">Money Handling</span>
+        <span class="skill-tag">Cash Management</span>
+        <span class="skill-tag">Financial Transactions</span>
+        <span class="skill-tag">Financial Regulations</span>
+        <span class="skill-tag">Data Analysis</span>
+        <span class="skill-tag">Problem Solving</span>
+        <span class="skill-tag">Attention to Detail</span>
+        <span class="skill-tag">Team Collaboration</span>
+        <span class="skill-tag">Time Management</span>
+        <span class="skill-tag">Conflict Management</span>
+        <span class="skill-tag">Communication Skills</span>
+        <span class="skill-tag">Sales Experience</span>
+        <span class="skill-tag">Hospitality</span>
+        <span class="skill-tag">HIPAA</span>
+        <span class="skill-tag">Medical Terminology</span>
+        <span class="skill-tag">Technology Proficiency</span>
+        <span class="skill-tag">Continuous Learning</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LANGUAGES & CERTS -->
+
+  <div class="section">
+    <div class="section-title">
+      <svg class="section-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <h2>Languages &amp; Certifications</h2>
+    </div>
+    <div class="section-body">
+      <div style="display:flex; flex-wrap:wrap; gap:2.5rem;">
+        <div>
+          <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:0.75rem;font-weight:700;">Languages</div>
+          <div class="cert-item"><span class="cert-dot"></span> English</div>
+        </div>
+        <div>
+          <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:0.75rem;font-weight:700;">Certifications</div>
+          <div class="cert-item"><span class="cert-dot"></span> Driver's License</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>Sean Bennett &nbsp;·&nbsp; Kings Park, NY &nbsp;·&nbsp; sean@bennett.ws</p>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('.section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
