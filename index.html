@@ -230,13 +230,36 @@
     }
 
     .link-btn {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
-  padding: 20px 28px;
-  border-radius: 16px;
-  box-shadow: 4px 4px 0px #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 20px 28px;
+      border-radius: 16px;
+      background: var(--orange);
+      color: #000;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 2px;
+      font-size: 15px;
+      white-space: nowrap;
+      text-decoration: none;
+      border: 3px solid #000;
+      cursor: pointer;
+      box-shadow: 4px 4px 0px #000;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Inner wrapper — fixed width so all buttons align identically */
+    .link-btn-inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 260px; /* fixed width keeps icon+text left-aligned and centered together */
+      position: relative;
+      z-index: 1;
+    }
 
     
       /* Orange fill with black border — matches the name */
