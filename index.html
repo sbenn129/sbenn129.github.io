@@ -233,10 +233,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 14px;
       width: 100%;
       padding: 20px 28px;
       border-radius: 16px;
+      line-height: 1;
     
       /* Orange fill with black border — matches the name */
       background: var(--orange);
@@ -288,15 +289,17 @@
       z-index: 1;
     }
 
-    .link-btn svg {
-      flex-shrink: 0;
-      width: 22px;
-      height: 22px;
-      fill: #000;
-      transition: fill 0.18s ease;
-      position: relative;
-      z-index: 1;
-    }
+.link-btn svg {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  fill: #000;
+  transition: fill 0.18s ease;
+  position: relative;
+  z-index: 1;
+  display: block;
+  line-height: 0;
+}
 
     .link-btn .btn-text {
       position: relative;
