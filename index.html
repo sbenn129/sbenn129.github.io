@@ -7,6 +7,10 @@
   <title>Sean Bennett</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <style>
+    /* Force Bebas Neue via CDN fallback */
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  </style>
+  <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -186,6 +190,7 @@ transition: transform 0.18s ease, box-shadow 0.18s ease;
 position: relative;
 overflow: hidden;
 isolation: isolate;
+white-space: nowrap;
 }
 .link-btn::before {
 content: ‘’;
@@ -216,12 +221,14 @@ fill: #000;
 display: block;
 }
 .btn-text {
-font-family: ‘Bebas Neue’, sans-serif !important;
-font-size: 15px;
+font-family: ‘Bebas Neue’, Impact, sans-serif !important;
+font-size: 15px !important;
 letter-spacing: 2px;
-color: #000;
+color: #000 !important;
 position: relative;
 z-index: 1;
+white-space: nowrap;
+display: block;
 }
 
 @keyframes fadeDown {
