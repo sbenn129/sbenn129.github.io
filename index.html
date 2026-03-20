@@ -257,6 +257,16 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Disable roll on touch devices */
+@media (hover: none) {
+      .roll-char-inner {
+        transform: translateY(0%) !important;
+        transition: none !important;
+      }
+    }
+
+  </style>
+
   </style>
 </head>
 <body>
