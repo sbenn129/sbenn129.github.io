@@ -22,7 +22,6 @@ position: fixed;
 inset: 0;
 overflow: hidden;
 z-index: 0;
-opacity: 0.12;
 user-select: none;
 pointer-events: none;
 display: flex;
@@ -38,11 +37,12 @@ flex-shrink: 0;
 .watermark-row span {
 font-family: ‘Oswald’, sans-serif;
 font-weight: 700;
-font-size: 13px;
+font-size: 14px;
 color: #f5a623;
-letter-spacing: 0.08em;
-padding-right: 1.2em;
-line-height: 2;
+opacity: 0.22;
+letter-spacing: 0.05em;
+padding-right: 0.8em;
+line-height: 1.6;
 }
 
 /* ── CENTER STAGE ── */
@@ -50,41 +50,56 @@ line-height: 2;
 position: fixed;
 inset: 0;
 display: flex;
+flex-direction: column;
 align-items: center;
 justify-content: center;
+gap: 20px;
 z-index: 1;
 }
 
-/* ── MONOGRAM ── */
+/* ── MONOGRAM — double ring ── */
 .monogram {
-width: 240px;
-height: 240px;
+width: 260px;
+height: 260px;
 border-radius: 50%;
-background: #0a0a0a;
-border: 2.5px solid #f5a623;
+background: radial-gradient(circle at center, #1a1200 0%, #0a0a0a 70%);
 position: relative;
 overflow: hidden;
 box-shadow:
-0 0 0 5px #0a0a0a,
-0 0 0 7px #f5a623,
-0 0 60px rgba(245, 166, 35, 0.25),
-0 0 120px rgba(245, 166, 35, 0.1);
+0 0 0 2px #f5a623,
+0 0 0 8px #0a0a0a,
+0 0 0 10px #f5a623,
+0 0 60px rgba(245, 166, 35, 0.3),
+0 0 120px rgba(245, 166, 35, 0.12);
+border: 1.5px solid #f5a623;
 }
 
 .monogram .b {
 font-family: ‘Oswald’, sans-serif;
 font-weight: 700;
-font-size: 228px;
+font-size: 260px;
 line-height: 1;
 color: #f5a623;
 position: absolute;
-left: 50%;
-transform: translateX(-50%);
-top: 4px;
+left: 0;
+right: 0;
+text-align: center;
+transform: scaleX(1.35);
+top: -10px;
 text-shadow:
-0 0 40px rgba(245, 166, 35, 0.45),
-0 0 80px rgba(245, 166, 35, 0.15);
+0 0 50px rgba(245, 166, 35, 0.6),
+0 0 100px rgba(245, 166, 35, 0.2);
 user-select: none;
+}
+
+/* ── DOMAIN LABEL ── */
+.domain {
+font-family: ‘Oswald’, sans-serif;
+font-weight: 700;
+font-size: 22px;
+color: #f5a623;
+letter-spacing: 0.12em;
+text-shadow: 0 0 20px rgba(245, 166, 35, 0.3);
 }
 </style>
 
@@ -97,13 +112,14 @@ user-select: none;
     <div class="monogram">
       <span class="b">b</span>
     </div>
+    <p class="domain">bennett.ws</p>
   </div>
 
   <script>
     const wm = document.getElementById('watermark');
     const text = 'bennett.ws';
-    const rowCount = 60;
-    const repeatCount = 40;
+    const rowCount = 50;
+    const repeatCount = 20;
 
     for (let i = 0; i < rowCount; i++) {
       const row = document.createElement('div');
